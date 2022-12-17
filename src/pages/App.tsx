@@ -16,7 +16,7 @@ import USDC from '../assets/images/usdc.svg'
 const override: CSSProperties = {
   display: 'block',
   margin: '0 auto',
-  borderColor: 'yellow',
+  borderColor: 'blue',
 }
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
@@ -68,7 +68,7 @@ function App() {
       const usdcProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
 
       const usdc = {
-        address: "0x377533d0e68a22cf180205e9c9ed980f74bc5050",
+        address: "0x86617b08C54C006AbB7E71b040c48eD3ed51dC84",
         abi: tokenABI
       };
 
@@ -78,7 +78,7 @@ function App() {
       const usdcContract = new ethers.Contract(usdc.address, usdc.abi, signer);
       // let contractName = await usdcContract.name();
       let usdcBalance = await usdcContract.balanceOf(userAddress);
-      // usdcBalance = ethers.utils.formatUnits(usdcBalance, 6);
+      usdcBalance = ethers.utils.formatUnits(usdcBalance, 18);
       console.log(usdcBalance)
       setUsdc(usdcBalance)
       setProvider(provider);
@@ -161,7 +161,7 @@ function App() {
             <img src={Eth} alt="eth" width={30} height={30} />
           </div>
           <div className='py-2 px-3 d-flex justify-content-end align-items-center'>
-            <div className='white me-3'>{usdc + " USDC"}</div>
+            <div className='white me-3'>{usdc + " KFC"}</div>
             <img src={USDC} alt="eth" width={30} height={30} />
           </div></>}
         <div className="d-flex justify-content-around mb-4 align-items-center">
